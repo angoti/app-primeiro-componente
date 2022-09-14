@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StatusBar, StyleSheet, Text, View } from "react-native";
+import img1 from "./assets/products/aspirador.jpg";
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar />
+      <View style={styles.seção}>
+        <Image style={styles.imagem} source={img1} resizeMode="contain" />
+        <View style={styles.seçãoTexto}>
+          <Text style={styles.texto}>Textos</Text>
+          <Text style={styles.texto}>Textos</Text>
+          <Text style={styles.texto}>Textos</Text>
+        </View>
+      </View>
     </View>
   );
-}
-
+};
+export default App;
 const styles = StyleSheet.create({
+  texto: {},
+  imagem: {
+    flex: 1,
+    height: 200,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  seção: {
+    flexDirection: "row",
+  },
+  seçãoTexto: {
+    flex: 1,
   },
 });
