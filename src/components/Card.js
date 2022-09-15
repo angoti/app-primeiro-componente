@@ -1,15 +1,32 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 
-const Card = ({ imagem, informações, descrição, titulo = "padrão" }) => {
+const Card = ({
+  imagem,
+  informações,
+  descrição,
+  titulo = "padrão",
+  onPress,
+}) => {
+  const navegar = () => onPress(titulo);
+
   return (
-    <View style={styles.seção}>
-      <Image style={styles.imagem} source={imagem} resizeMode="contain" />
-      <View style={styles.seçãoTexto}>
-        <Text style={styles.texto}>{titulo}</Text>
-        <Text style={styles.texto}>{descrição}</Text>
-        <Text style={styles.texto}>{informações}</Text>
+    <TouchableOpacity onPress={navegar}>
+      <View style={styles.seção}>
+        <Image style={styles.imagem} source={imagem} resizeMode="contain" />
+        <View style={styles.seçãoTexto}>
+          <Text style={styles.texto}>{titulo}</Text>
+          <Text style={styles.texto}>{descrição}</Text>
+          <Text style={styles.texto}>{informações}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
