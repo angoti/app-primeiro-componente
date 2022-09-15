@@ -1,35 +1,29 @@
-import { Image, StatusBar, StyleSheet, Text, View } from "react-native";
-import img1 from "./assets/products/aspirador.jpg";
+import { FlatList, StatusBar, StyleSheet, View } from "react-native";
+import Card from "./src/components/Card";
+import { getItens } from "./src/services/mock";
 
 const App = () => {
+  const dados = getItens();
   return (
     <View style={styles.container}>
       <StatusBar />
-      <View style={styles.seção}>
-        <Image style={styles.imagem} source={img1} resizeMode="contain" />
-        <View style={styles.seçãoTexto}>
-          <Text style={styles.texto}>Textos</Text>
-          <Text style={styles.texto}>Textos</Text>
-          <Text style={styles.texto}>Textos</Text>
-        </View>
-      </View>
+      <FlatList
+        data={dados}
+        renderItem={({ item }) => (
+          <Card
+            descrição={item.descricao}
+            imagem={item.imagem}
+            informações={item.valor}
+            titulo={item.titulo}
+          />
+        )}
+      />
     </View>
   );
 };
 export default App;
 const styles = StyleSheet.create({
-  texto: {},
-  imagem: {
-    flex: 1,
-    height: 200,
-  },
   container: {
-    flex: 1,
-  },
-  seção: {
-    flexDirection: "row",
-  },
-  seçãoTexto: {
     flex: 1,
   },
 });
